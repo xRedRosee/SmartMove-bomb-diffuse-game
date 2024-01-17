@@ -10,10 +10,10 @@ const app = createApp(App)
 
 app.use(router, )
 app.use(VueGoogleMaps, {
-    load: {
-      key: 'AIzaSyCQlw21TVVnn_aPtLC23HtHehh21TW6Jzk',
-    },
-  })
+  load: {
+    key: process.env.GOOGLE_MAPS_API_KEY,
+  },
+})
 app.mount('#app')
 
 
