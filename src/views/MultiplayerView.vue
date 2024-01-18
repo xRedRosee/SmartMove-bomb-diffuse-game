@@ -118,9 +118,10 @@
                 </li>
               </ul>
             </article>
-            <button class="diffuse-btn" @click="diffuseBomb">
-              Diffuse bomb!
-            </button>
+            <div class="btn-divider-bomb">
+                            <button class="visit-button" @click="showBomb(false)"> Go back </button>
+                            <button class="visit-button" @click="diffuseBomb"> Diffuse! </button>
+                        </div>
           </div>
         </section>
       </div>
@@ -174,6 +175,8 @@
               </li>
             </ul>
           </article>
+          <button class="diffuse-btn" @click="showCraft(false)"> Go back </button>
+
         </section>
       </div>
     </div>
@@ -863,6 +866,36 @@ export default {
         document.querySelector(".craft-sheet-example").style.display = "none";
       }
     },
+    showBomb(openSheet) {
+            if (openSheet) {
+                document.querySelector(".sheet").style.display = 'none';
+                document.querySelector(".craft-sheet").style.display = 'none';
+                document.querySelector(".bomb-sheet").style.display = 'Flex';
+                document.querySelector(".bomb-sheet-example").style.display = 'none';
+                document.querySelector(".craft-sheet-example").style.display = 'none';
+            } else {
+                document.querySelector(".sheet").style.display = 'flex';
+                document.querySelector(".craft-sheet").style.display = 'none';
+                document.querySelector(".bomb-sheet").style.display = 'none';
+                document.querySelector(".bomb-sheet-example").style.display = 'none';
+                document.querySelector(".craft-sheet-example").style.display = 'none';
+            }
+        },
+        showCraft(openSheet) {
+            if (openSheet) {
+                document.querySelector(".sheet").style.display = 'none';
+                document.querySelector(".craft-sheet").style.display = 'flex';
+                document.querySelector(".bomb-sheet").style.display = 'none';
+                document.querySelector(".bomb-sheet-example").style.display = 'none';
+                document.querySelector(".craft-sheet-example").style.display = 'none';
+            } else {
+                document.querySelector(".sheet").style.display = 'flex';
+                document.querySelector(".craft-sheet").style.display = 'none';
+                document.querySelector(".bomb-sheet").style.display = 'none';
+                document.querySelector(".bomb-sheet-example").style.display = 'none';
+                document.querySelector(".craft-sheet-example").style.display = 'none';
+            }
+        },
     changeUserStatus() {
       var actualUser = this.usersInMyRoom.find((x) => x.id == this.socket.id);
       actualUser.isReady = !actualUser.isReady;
@@ -1418,6 +1451,13 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.btn-divider-bomb {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .needed-craft-item {
